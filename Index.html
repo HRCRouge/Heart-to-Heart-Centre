@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart to Heart Centre – Membership Form</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .form-container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 🌊 Watermark */
+    .form-container::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 420px;
+      height: 420px;
+      background: url("logo.png") no-repeat center;
+      background-size: contain;
+      opacity: 0.07;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 🧱 Header layout */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      width: 90px;
+    }
+
+    .title-block {
+      flex: 1;
+    }
+
+    .title-block h1 {
+      margin: 0;
+      color: #2f3e9e;
+      font-size: 28px;
+    }
+
+    .title-block h2 {
+      margin: 2px 0 0;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    .reg-no {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .membership-title {
+      background: #2f3e9e;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .form-body {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      flex: 2;
+      min-width: 280px;
+    }
+
+    .right {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .field input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px dotted #000;
+      outline: none;
+      padding: 6px 4px;
+      font-size: 14px;
+      background: transparent;
+    }
+
+    .dob {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dob input {
+      flex: 1;
+    }
+
+    .photo-box {
+      width: 150px;
+      height: 180px;
+      border: 1px solid #000;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-upload {
+      margin-top: 10px;
+    }
+
+    /* ✅ Agreement */
+    .agreement {
+      margin-top: 25px;
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px;
+      width: 100%;
+      background: #2f3e9e;
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    /* 📱 Mobile */
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .reg-no {
+        margin-top: 5px;
+      }
+
+      .form-body {
+        flex-direction: column;
+      }
+
+      .photo-box {
+        width: 120px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<form class="form-container" onsubmit="return validateForm()">
+  <div class="content">
+
+    <div class="header">
+      <img src="logo.png" alt="Heart to Heart Logo" class="logo">
+
+      <div class="title-block">
+        <h1>Heart to Heart Centre</h1>
+        <h2>Nepal – 2007</h2>
+      </div>
+
+      <div class="reg-no">
+        Regd. No.: 2505/229/414
+      </div>
+    </div>
+
+    <div class="membership-title">
+      Membership Form <br>
+      <small>Ordinary / Life Time</small>
+    </div>
+
+    <div class="form-body">
+
+      <div class="left knowing">
+
+        <div class="field">
+          <label>Name *</label>
+          <input type="text" required>
+        </div>
+
+        <div class="field">
+          <label>Address *</label>
+          <input type="text" required>
+        </div>
+
+        <div class="field">
+          <label>Phone / Mobile No *</label>
+          <input type="tel" pattern="[0-9]{7,15}" required placeholder="Numbers only">
+        </div>
+
+        <div class="field">
+          <label>E-mail *</label>
+          <input type="email" required>
+        </div>
+
+        <div class="field">
+          <label>Date of Birth *</label>
+          <div class="dob">
+            <input type="number" placeholder="Year" required>
+            <input type="number" placeholder="Month" min="1" max="12" required>
+            <input type="number" placeholder="Day" min="1" max="31" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Occupation</label>
+          <input type="text">
+        </div>
+
+        <div class="field">
+          <label>Marital Status</label>
+          <input type="text">
+        </div>
+
+        <div class="field">
+          <label>Spouse Name</label>
+          <input type="text">
+        </div>
+
+        <div class="field">
+          <label>Blood Group</label>
+          <input type="text">
+        </div>
+
+      </div>
+
+      <div class="right">
+        <div class="photo-box">
+          <img id="photoPreview" alt="">
+        </div>
+
+        <div class="photo-upload">
+          <input type="file" accept="image/*" required onchange="previewPhoto(event)">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ✅ Agreement -->
+    <div class="agreement">
+      <input type="checkbox" id="agree" required>
+      <label for="agree">
+        I hereby agree to become a member of the Heart to Heart Centre and
+        commit to abide by the rules, regulations, and objectives of the institution.
+      </label>
+    </div>
+
+    <button type="submit">Submit Membership Form</button>
+
+  </div>
+</form>
+
+<script>
+  function previewPhoto(event) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      document.getElementById("photoPreview").src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+  function validateForm() {
+    alert("Membership form submitted successfully!");
+    return true;
+  }
+</script>
+
+</body>
+</html>
